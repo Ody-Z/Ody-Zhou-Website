@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SYSTEM_ODY // TERMINAL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=JetBrains+Mono:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'crt-amber': '#ffb000',
+              'crt-amber-dim': '#593d00',
+              'crt-cyan': '#00f3ff',
+              'crt-cyan-dim': 'rgba(0, 243, 255, 0.1)',
+              'crt-rose': '#ff0055',
+              'crt-bg': '#050505',
+              'crt-panel': '#0e0e0e',
+            },
+            fontFamily: {
+              'display': ['Audiowide', 'cursive'],
+              'mono': ['"JetBrains Mono"', 'monospace'],
+              'retro': ['"VT323"', 'monospace'],
+            },
+            animation: {
+              'scanline': 'scanline 8s linear infinite',
+              'flicker': 'flicker 0.15s infinite',
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              scanline: {
+                '0%': { transform: 'translateY(-100%)' },
+                '100%': { transform: 'translateY(100%)' }
+              },
+              flicker: {
+                '0%': { opacity: '0.97' },
+                '5%': { opacity: '0.92' },
+                '10%': { opacity: '0.98' },
+                '15%': { opacity: '0.95' },
+                '100%': { opacity: '0.97' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #050505;
+        overflow: hidden; 
+        cursor: none; /* Hide default cursor */
+      }
+      
+      /* Ensure all elements inherit cursor: none so the system cursor doesn't pop up */
+      a, button, input, textarea, select {
+        cursor: none;
+      }
+
+      /* Custom Scrollbar for inner content */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #0e0e0e;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #593d00;
+        border: 1px solid #ffb000;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #ffb000;
+      }
+      
+      /* CRT Screen Effects */
+      .scanlines {
+        background: linear-gradient(
+          to bottom,
+          rgba(255,255,255,0),
+          rgba(255,255,255,0) 50%,
+          rgba(0,0,0,0.2) 50%,
+          rgba(0,0,0,0.2)
+        );
+        background-size: 100% 4px;
+      }
+      
+      .rgb-shift {
+        text-shadow: 
+          2px 0 rgba(255,0,0,0.3), 
+          -2px 0 rgba(0,255,255,0.3);
+      }
+      
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
