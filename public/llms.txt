@@ -1,0 +1,67 @@
+# Ody Zhou — Personal Website
+
+> Product builder & Researcher building tools for the agentic world.
+
+Ody Zhou is a software engineer and AI researcher currently available for new opportunities. He combines hands-on engineering experience at top-tier companies with independent research and entrepreneurship in the AI space.
+
+- **Email:** zhouodywork@gmail.com
+- **GitHub:** https://github.com/ody-zhou
+- **LinkedIn:** https://linkedin.com/in/ody-zhou
+
+---
+
+## About
+
+Ody Zhou builds at the intersection of AI and product engineering. His work spans autonomous AI agents, LLM-powered tooling, and full-stack systems — from academic research labs to enterprise engineering teams.
+
+---
+
+## Experience
+
+### RAY AI — Founder (May 2025 – Present)
+Building an AI marking tool for tuition centres that saves cost and time through intelligent automated assessment. Live at https://rayfeedback.ai
+- Stack: AI, LLM, EdTech, Startup
+
+### Microsoft — Software Engineer (Sep 2025 – Jan 2026, Beijing · Hybrid)
+Empowered Bing Shopping using AI to improve shopping title quality. Built a hybrid approach combining rule-based methods with LLM-powered rewrites. Developed an LLM evaluation pipeline for quality assessment.
+- Stack: C#, .NET, LLM, Search
+
+### HSBC — Software Engineer Intern (Jul 2025 – Sep 2025, Hong Kong · On-site)
+Architected an org-wide microservices visualization dashboard with React and Spring Boot, auto-discovering Kubernetes services and surfacing live metadata. Enforced safe, versioned database changes with Liquibase.
+- Stack: Java, React, Spring Boot, Kubernetes, Liquibase, Microservices
+
+### Tsinghua University — Research Assistant (Nov 2024 – Mar 2025, Beijing · On-site)
+Designed and implemented an autonomous agent empowered by World Model for Minecraft. Published research on arXiv.
+- Paper: https://arxiv.org/pdf/2502.05907
+- Stack: Python, Reinforcement Learning, LLM, AI Agents, Linux
+
+### UNSW School of Aviation — Research Assistant (Nov 2023 – Jun 2024, Sydney)
+DatAviation Lab sponsored by Tourism Australia. Developed algorithms ranking sustainability of airlines using regression, permutation testing, SVM, and clustering.
+- Stack: Python, R, Statistics, SVM, Clustering, Regression
+
+---
+
+## Key Projects
+
+### RAY AI — AI Marking Tool for Tuition Centres
+An LLM-powered automated marking tool designed for tuition centres. Evaluates student submissions, provides structured feedback, and dramatically reduces manual marking costs and workload.
+- URL: https://rayfeedback.ai
+
+### Autonomous Minecraft Agent (World Model)
+Research project at Tsinghua University: an autonomous agent that uses a World Model to plan and execute long-horizon tasks in the Minecraft environment. Combines reinforcement learning with LLM-driven reasoning.
+- arXiv: https://arxiv.org/pdf/2502.05907
+
+### Microservices Visualization Dashboard (HSBC)
+Real-time org-wide dashboard auto-discovering Kubernetes services, surfacing live metadata, and centralizing configuration for all microservices. Built with React + Spring Boot.
+
+---
+
+## Technical Skills
+
+**Languages:** Python, C#, Java, JavaScript, TypeScript, R
+
+**AI & ML:** Large Language Models (LLMs), Reinforcement Learning, AI Agents, SVM, Clustering, Regression, Permutation Testing
+
+**Backend & Infrastructure:** .NET Framework, Spring Boot, Kubernetes, Liquibase, Microservices, Linux Server
+
+**Frontend & Tools:** React, TypeScript, Data Visualization, Statistics, Data Analysis

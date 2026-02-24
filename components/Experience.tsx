@@ -20,10 +20,11 @@ const experiences: ExperienceItem[] = [
     period: 'May 2025 — Present',
     location: '',
     description: [
-      'Building an AI marketing assistant that saves businesses money and time through intelligent automation.',
+      'Building an AI marking workflow for tuition centres that reduces cost and manual workload through automated assessment and feedback.',
     ],
-    tags: ['AI', 'Marketing Tech', 'Startup', 'LLM'],
+    tags: ['AI', 'EdTech', 'Startup', 'LLM'],
     color: '#FFDD00',
+    link: 'https://rayfeedback.ai',
   },
   {
     company: 'Microsoft',
@@ -156,7 +157,7 @@ function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }
             ))}
           </ul>
 
-          {/* arXiv link */}
+          {/* External link */}
           {item.link && (
             <a
               href={item.link}
@@ -175,7 +176,7 @@ function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }
                 transition: 'opacity 0.15s',
               }}
             >
-              ↗ VIEW PAPER (ARXIV)
+              {item.link.includes('arxiv') ? '↗ VIEW PAPER (ARXIV)' : `↗ ${item.link.replace(/^https?:\/\//, '')}`}
             </a>
           )}
 
