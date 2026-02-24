@@ -32,7 +32,7 @@ export function Navbar() {
             >
               BUILDING THE FUTURE OF AI&nbsp;&nbsp;·&nbsp;&nbsp;RAY AI IS LIVE
               →&nbsp;&nbsp;·&nbsp;&nbsp;OPEN TO NEW OPPORTUNITIES&nbsp;&nbsp;·&nbsp;&nbsp;SOFTWARE
-              ENGINEER & AI RESEARCHER&nbsp;&nbsp;·
+              AI PRODUCT BUILDER & RESEARCHER&nbsp;&nbsp;·
             </span>
           ))}
         </div>

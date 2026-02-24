@@ -69,7 +69,7 @@ export function Footer() {
               className="font-mono uppercase text-navy"
               style={{ fontSize: 11, letterSpacing: '0.1em', marginTop: 10, opacity: 0.5, lineHeight: 1.6 }}
             >
-              Software Engineer<br />& AI Researcher
+              AI Product Builder<br />& Researcher
             </p>
           </div>
 

@@ -169,18 +169,18 @@ export function Hero() {
 
         {/* Headline */}
         <h1
-          className="hero-2 font-mono font-bold uppercase text-navy"
+          className="hero-2 font-mono font-bold text-navy"
           style={{
             fontSize: 'clamp(2.8rem, 9vw, 7rem)',
             lineHeight: 1.04,
             letterSpacing: '-0.02em',
           }}
         >
-          INFRASTRUCTURE
+          Landing Ideas
           <br />
-          <span style={{ color: '#F4763B' }}>FOR</span>
+          <span style={{ color: '#F4763B' }}>into</span>
           <br />
-          INTELLIGENCE
+          Future
         </h1>
 
         {/* Sub-copy */}
@@ -188,8 +188,7 @@ export function Hero() {
           className="hero-3 font-body text-navy max-w-xl mx-auto"
           style={{ fontSize: 18, lineHeight: 1.65, opacity: 0.62, marginTop: 28, marginBottom: 44 }}
         >
-          Ody Zhou — Software Engineer & AI Researcher building at the intersection of
-          intelligent systems, cloud infrastructure, and applied machine learning.
+          Ody Zhou — Product builder & Researcher building tools for the agentic world.
         </p>
 
         {/* CTAs */}
@@ -216,7 +215,7 @@ export function Hero() {
           <img
             src="/ody.jpg"
             alt="Ody Zhou"
-            style={{ width: 148, height: 148, objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+            style={{ width: 210, height: 210, objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
           />
           <p
             style={{
