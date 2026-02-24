@@ -3,98 +3,160 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SYSTEM_ODY // TERMINAL</title>
+    <title>Ody Zhou — Software Engineer & AI Researcher</title>
+    <meta name="description" content="Personal website of Ody Zhou — Software Engineer & AI Researcher. Experience at Microsoft, HSBC, Tsinghua University, and more." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=JetBrains+Mono:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              'crt-amber': '#ffb000',
-              'crt-amber-dim': '#593d00',
-              'crt-cyan': '#00f3ff',
-              'crt-cyan-dim': 'rgba(0, 243, 255, 0.1)',
-              'crt-rose': '#ff0055',
-              'crt-bg': '#050505',
-              'crt-panel': '#0e0e0e',
+              'brand': '#FDB900',
+              'brand-dark': '#E5A700',
+              'brand-light': '#FFD54F',
+              'accent': '#FF6B00',
+              'surface': '#0a0a0a',
+              'surface-2': '#111111',
+              'surface-3': '#1a1a1a',
+              'surface-4': '#222222',
+              'text-primary': '#f5f5f5',
+              'text-secondary': '#888888',
+              'text-muted': '#555555',
             },
             fontFamily: {
-              'display': ['Audiowide', 'cursive'],
-              'mono': ['"JetBrains Mono"', 'monospace'],
-              'retro': ['"VT323"', 'monospace'],
+              'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+              'display': ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
             },
             animation: {
-              'scanline': 'scanline 8s linear infinite',
-              'flicker': 'flicker 0.15s infinite',
-              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'fade-in': 'fadeIn 0.8s ease-out forwards',
+              'slide-up': 'slideUp 0.8s ease-out forwards',
+              'slide-down': 'slideDown 0.5s ease-out forwards',
+              'float': 'float 6s ease-in-out infinite',
+              'float-delayed': 'float 6s ease-in-out 2s infinite',
+              'float-slow': 'float 8s ease-in-out 1s infinite',
+              'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+              'spin-slow': 'spin 20s linear infinite',
             },
             keyframes: {
-              scanline: {
-                '0%': { transform: 'translateY(-100%)' },
-                '100%': { transform: 'translateY(100%)' }
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
               },
-              flicker: {
-                '0%': { opacity: '0.97' },
-                '5%': { opacity: '0.92' },
-                '10%': { opacity: '0.98' },
-                '15%': { opacity: '0.95' },
-                '100%': { opacity: '0.97' }
-              }
-            }
-          }
-        }
+              slideUp: {
+                '0%': { opacity: '0', transform: 'translateY(30px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              slideDown: {
+                '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              pulseGlow: {
+                '0%, 100%': { opacity: '0.4' },
+                '50%': { opacity: '0.8' },
+              },
+            },
+          },
+        },
       }
     </script>
     <style>
-      body {
-        background-color: #050505;
-        overflow: hidden; 
-        cursor: none; /* Hide default cursor */
-      }
-      
-      /* Ensure all elements inherit cursor: none so the system cursor doesn't pop up */
-      a, button, input, textarea, select {
-        cursor: none;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
-      /* Custom Scrollbar for inner content */
-      .custom-scrollbar::-webkit-scrollbar {
-        width: 6px;
-      }
-      .custom-scrollbar::-webkit-scrollbar-track {
-        background: #0e0e0e;
-      }
-      .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: #593d00;
-        border: 1px solid #ffb000;
-      }
-      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: #ffb000;
-      }
-      
-      /* CRT Screen Effects */
-      .scanlines {
-        background: linear-gradient(
-          to bottom,
-          rgba(255,255,255,0),
-          rgba(255,255,255,0) 50%,
-          rgba(0,0,0,0.2) 50%,
-          rgba(0,0,0,0.2)
-        );
-        background-size: 100% 4px;
-      }
-      
-      .rgb-shift {
-        text-shadow: 
-          2px 0 rgba(255,0,0,0.3), 
-          -2px 0 rgba(0,255,255,0.3);
-      }
-      
       html {
         scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+
+      body {
+        background-color: #0a0a0a;
+        color: #f5f5f5;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      ::selection {
+        background-color: rgba(253, 185, 0, 0.3);
+        color: #fff;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0a0a0a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #FDB900;
+      }
+
+      /* Scroll reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-delay-1 { transition-delay: 0.1s; }
+      .reveal-delay-2 { transition-delay: 0.2s; }
+      .reveal-delay-3 { transition-delay: 0.3s; }
+      .reveal-delay-4 { transition-delay: 0.4s; }
+
+      /* Gradient text */
+      .gradient-text {
+        background: linear-gradient(135deg, #FDB900 0%, #FF6B00 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Card hover glow */
+      .card-glow {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .card-glow:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 0 40px rgba(253, 185, 0, 0.08), 0 20px 60px rgba(0, 0, 0, 0.3);
+        border-color: rgba(253, 185, 0, 0.2);
+      }
+
+      /* Dot pattern */
+      .dot-pattern {
+        background-image: radial-gradient(rgba(253, 185, 0, 0.08) 1px, transparent 1px);
+        background-size: 24px 24px;
+      }
+
+      /* Noise texture overlay */
+      .noise::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        opacity: 0.015;
+        z-index: 1000;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
       }
     </style>
   <script type="importmap">
@@ -107,7 +169,8 @@
 }
 </script>
 </head>
-  <body>
+  <body class="noise">
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
