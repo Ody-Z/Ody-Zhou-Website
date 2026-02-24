@@ -239,6 +239,67 @@ export function Experience() {
             <ExperienceCard key={item.company} item={item} index={index} />
           ))}
         </div>
+
+        {/* Education */}
+        <div className="reveal" style={{ marginTop: 72, marginBottom: 40 }}>
+          <p
+            className="font-mono font-bold uppercase text-orange"
+            style={{ fontSize: 11, letterSpacing: '0.14em', marginBottom: 12 }}
+          >
+            EDUCATION
+          </p>
+          <h2
+            className="font-mono font-bold uppercase text-navy"
+            style={{
+              fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+              letterSpacing: '-0.02em',
+              lineHeight: 1.05,
+            }}
+          >
+            BACKGROUND
+          </h2>
+          <div style={{ marginTop: 14, width: 48, height: 4, background: '#1A1A1A' }} />
+        </div>
+
+        <div className="reveal reveal-delay-1 relative">
+          <div className="exp-card">
+            <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 5, background: '#FFDD00' }} />
+            <div style={{ padding: '24px 28px 24px 34px' }}>
+              <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, marginBottom: 16 }}>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+                    <div style={{ width: 13, height: 13, background: '#FFDD00', border: '2px solid #1A1A1A', flexShrink: 0 }} />
+                    <h3 className="font-mono font-bold uppercase text-navy" style={{ fontSize: 16, letterSpacing: '0.04em' }}>
+                      University of Sydney
+                    </h3>
+                  </div>
+                  <p className="font-body text-navy" style={{ fontSize: 13, opacity: 0.55, marginLeft: 23 }}>
+                    Bachelor of Computing · In Progress
+                  </p>
+                </div>
+                <div className="font-mono text-navy" style={{ fontSize: 11, opacity: 0.45, textAlign: 'right', fontWeight: 700, flexShrink: 0 }}>
+                  <div>Sydney, Australia</div>
+                </div>
+              </div>
+              <ul style={{ marginBottom: 16, marginLeft: 23, display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <li className="font-body text-navy" style={{ fontSize: 14, lineHeight: 1.65, opacity: 0.7, display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+                  <span style={{ color: '#FFDD00', fontWeight: 700, flexShrink: 0, marginTop: 1 }}>—</span>
+                  Major in Computational Data Science
+                </li>
+                <li className="font-body text-navy" style={{ fontSize: 14, lineHeight: 1.65, opacity: 0.7, display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+                  <span style={{ color: '#FFDD00', fontWeight: 700, flexShrink: 0, marginTop: 1 }}>—</span>
+                  Minor in Statistics
+                </li>
+              </ul>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginLeft: 23 }}>
+                {['Data Science', 'Statistics', 'Computing', 'Python', 'R'].map((tag) => (
+                  <span key={tag} className="tech-tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div style={{ position: 'absolute', inset: 0, border: '2.5px solid #1A1A1A', transform: 'translate(5px, 5px)', zIndex: -1, background: '#C8C3B7', pointerEvents: 'none' }} />
+        </div>
       </div>
     </section>
   );
