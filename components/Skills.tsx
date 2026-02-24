@@ -1,109 +1,196 @@
 import React from 'react';
 
-interface SkillCategory {
+interface Category {
   title: string;
-  icon: React.ReactNode;
+  num: string;
   skills: string[];
+  accent: string;
+  shadowColor: string;
 }
 
-const categories: SkillCategory[] = [
+const categories: Category[] = [
   {
-    title: 'Languages',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
-      </svg>
-    ),
+    title: 'LANGUAGES',
+    num: '01',
     skills: ['Python', 'C#', 'Java', 'JavaScript', 'TypeScript', 'R'],
+    accent: '#F4763B',
+    shadowColor: 'rgba(244,118,59,0.35)',
   },
   {
-    title: 'AI & Machine Learning',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2a4 4 0 0 0-4 4c0 2 1 3 2 4l-4 8h12l-4-8c1-1 2-2 2-4a4 4 0 0 0-4-4z" />
-        <path d="M12 18v4" />
-      </svg>
-    ),
+    title: 'AI & ML',
+    num: '02',
     skills: ['Large Language Models', 'Reinforcement Learning', 'AI Agents', 'SVM', 'Clustering', 'Regression', 'Permutation Testing'],
+    accent: '#9B72CF',
+    shadowColor: 'rgba(155,114,207,0.35)',
   },
   {
-    title: 'Backend & Infrastructure',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="2" width="20" height="8" rx="2" />
-        <rect x="2" y="14" width="20" height="8" rx="2" />
-        <circle cx="6" cy="6" r="1" />
-        <circle cx="6" cy="18" r="1" />
-      </svg>
-    ),
+    title: 'BACKEND & INFRA',
+    num: '03',
     skills: ['.NET Framework', 'Spring Boot', 'Kubernetes', 'Liquibase', 'Microservices', 'Linux Server'],
+    accent: '#4A90D9',
+    shadowColor: 'rgba(74,144,217,0.35)',
   },
   {
-    title: 'Frontend & Tools',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <path d="M3 9h18" />
-        <path d="M9 21V9" />
-      </svg>
-    ),
-    skills: ['React', 'Statistics', 'Data Analysis'],
+    title: 'FRONTEND & TOOLS',
+    num: '04',
+    skills: ['React', 'TypeScript', 'Data Visualization', 'Statistics', 'Data Analysis'],
+    accent: '#30C9B8',
+    shadowColor: 'rgba(48,201,184,0.35)',
   },
 ];
 
+/* ─── Cloud SVG ─── */
+function Cloud({ style }: { style?: React.CSSProperties }) {
+  return (
+    <svg viewBox="0 0 220 110" fill="none" xmlns="http://www.w3.org/2000/svg" style={style}>
+      <ellipse cx="110" cy="82" rx="88" ry="44" fill="white" stroke="#1A1A1A" strokeWidth="2.2" />
+      <ellipse cx="70"  cy="65" rx="52" ry="38" fill="white" stroke="#1A1A1A" strokeWidth="2.2" />
+      <ellipse cx="152" cy="70" rx="58" ry="36" fill="white" stroke="#1A1A1A" strokeWidth="2.2" />
+      <ellipse cx="110" cy="55" rx="64" ry="38" fill="white" stroke="#1A1A1A" strokeWidth="2.2" />
+    </svg>
+  );
+}
+
 export function Skills() {
   return (
-    <section id="skills" className="relative py-24 md:py-32">
-      {/* Background accent */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-      <div className="absolute inset-0 dot-pattern opacity-20" />
+    <section
+      id="skills"
+      className="relative border-t-2 border-navy overflow-hidden"
+      style={{ background: '#7DC7E8', padding: '80px 0 120px' }}
+    >
+      {/* ── Background clouds ── */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden>
+        <div className="cloud-1 absolute" style={{ left: '-80px', top: 20, width: 280 }}>
+          <Cloud />
+        </div>
+        <div className="cloud-2 absolute" style={{ right: '-60px', top: 40, width: 250 }}>
+          <Cloud />
+        </div>
+        <div className="cloud-3 absolute" style={{ left: '18%', bottom: 50, width: 200 }}>
+          <Cloud />
+        </div>
+        <div className="cloud-4 absolute" style={{ right: '22%', bottom: 70, width: 220 }}>
+          <Cloud />
+        </div>
+        <div className="cloud-1 absolute" style={{ left: '46%', top: 0, width: 175, opacity: 0.75 }}>
+          <Cloud />
+        </div>
+      </div>
 
-      <div className="relative max-w-4xl mx-auto px-6">
+      {/* ── Content ── */}
+      <div className="relative z-10 max-w-5xl mx-auto px-6">
+
         {/* Section header */}
-        <div className="reveal mb-16">
-          <p className="text-sm font-medium text-brand tracking-widest uppercase mb-3">
-            Toolkit
+        <div className="reveal text-center" style={{ marginBottom: 56 }}>
+          <p
+            className="font-mono font-bold uppercase text-navy"
+            style={{ fontSize: 11, letterSpacing: '0.14em', marginBottom: 12, opacity: 0.55 }}
+          >
+            TOOLKIT
           </p>
-          <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-text-primary">
-            Skills & Technologies
+          <h2
+            className="font-mono font-bold uppercase text-navy"
+            style={{
+              fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+              letterSpacing: '-0.02em',
+              lineHeight: 1.05,
+            }}
+          >
+            SKILLS &amp;<br />TECHNOLOGIES
           </h2>
-          <div className="mt-4 w-16 h-1 rounded-full bg-gradient-to-r from-brand to-accent" />
+          <div style={{ marginTop: 14, width: 48, height: 4, background: '#1A1A1A', margin: '14px auto 0' }} />
         </div>
 
-        {/* Skill categories grid */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {categories.map((category, index) => (
+        {/* Skill grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: 24,
+          }}
+        >
+          {categories.map((cat, index) => (
             <div
-              key={category.title}
-              className={`reveal reveal-delay-${(index % 4) + 1}`}
+              key={cat.title}
+              className={`reveal reveal-delay-${(index % 4) + 1} relative`}
             >
-              <div className="card-glow group h-full rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 md:p-8">
-                {/* Category header */}
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-xl bg-brand/10 border border-brand/20 flex items-center justify-center text-brand group-hover:bg-brand/15 transition-colors">
-                    {category.icon}
-                  </div>
-                  <h3 className="text-lg font-semibold text-text-primary">
-                    {category.title}
-                  </h3>
-                </div>
+              <div className="skill-card">
+                {/* Top accent bar */}
+                <div style={{ height: 5, background: cat.accent }} />
 
-                {/* Skill tags */}
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 rounded-full text-sm bg-white/[0.04] border border-white/[0.06] text-text-secondary hover:border-brand/20 hover:text-text-primary transition-all duration-200 cursor-default"
+                <div style={{ padding: '20px 22px 22px' }}>
+                  {/* Number + title */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                    <div
+                      style={{
+                        width: 36, height: 36,
+                        background: cat.accent,
+                        border: '2px solid #1A1A1A',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        flexShrink: 0,
+                      }}
                     >
-                      {skill}
-                    </span>
-                  ))}
+                      <span
+                        className="font-mono font-bold text-white"
+                        style={{ fontSize: 11, letterSpacing: '0.04em' }}
+                      >
+                        {cat.num}
+                      </span>
+                    </div>
+                    <h3
+                      className="font-mono font-bold uppercase text-navy"
+                      style={{ fontSize: 13, letterSpacing: '0.04em' }}
+                    >
+                      {cat.title}
+                    </h3>
+                  </div>
+
+                  {/* Tags */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
+                    {cat.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="tech-tag"
+                        style={{ background: '#F8F5EE' }}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
+
+              {/* Card shadow */}
+              <div
+                style={{
+                  position: 'absolute', inset: 0,
+                  border: '2.5px solid #1A1A1A',
+                  transform: 'translate(5px, 5px)',
+                  zIndex: -1,
+                  background: cat.accent,
+                  opacity: 0.4,
+                  pointerEvents: 'none',
+                }}
+              />
             </div>
           ))}
         </div>
+      </div>
+
+      {/* ── Bottom cloud divider into footer ── */}
+      <div
+        className="absolute bottom-0 left-0 right-0 pointer-events-none"
+        style={{ lineHeight: 0 }}
+      >
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
+          <ellipse cx="320"  cy="72" rx="240" ry="65" fill="white" />
+          <ellipse cx="160"  cy="80" rx="180" ry="55" fill="white" />
+          <ellipse cx="480"  cy="78" rx="210" ry="60" fill="white" />
+          <ellipse cx="1080" cy="68" rx="260" ry="68" fill="white" />
+          <ellipse cx="920"  cy="78" rx="200" ry="55" fill="white" />
+          <ellipse cx="1260" cy="76" rx="220" ry="58" fill="white" />
+          <rect x="0" y="74" width="1440" height="6" fill="#EDE8DC" />
+        </svg>
       </div>
     </section>
   );

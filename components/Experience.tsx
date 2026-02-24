@@ -23,7 +23,7 @@ const experiences: ExperienceItem[] = [
       'Building an AI marketing assistant that saves businesses money and time through intelligent automation.',
     ],
     tags: ['AI', 'Marketing Tech', 'Startup', 'LLM'],
-    color: '#FDB900',
+    color: '#FFDD00',
   },
   {
     company: 'Microsoft',
@@ -75,113 +75,165 @@ const experiences: ExperienceItem[] = [
     location: 'Sydney, Australia',
     description: [
       'DatAviation lab sponsored by Tourism Australia.',
-      'Developed algorithms ranking sustainability of different airlines using regression, permutation testing, SVM, and clustering.',
+      'Developed algorithms ranking sustainability of airlines using regression, permutation testing, SVM, and clustering.',
     ],
     tags: ['Python', 'R', 'Statistics', 'SVM', 'Clustering', 'Regression'],
-    color: '#FFE600',
+    color: '#F4763B',
   },
 ];
 
-function ExperienceCard({ item, index }: { item: ExperienceItem; index: number; key?: string }) {
+function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }) {
   return (
-    <div
-      className={`reveal reveal-delay-${(index % 4) + 1}`}
-    >
-      <div className="card-glow group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 md:p-8">
-        {/* Top accent line */}
+    <div className={`reveal reveal-delay-${(index % 4) + 1} relative`}>
+      <div className="exp-card">
+        {/* Left color stripe */}
         <div
-          className="absolute top-0 left-8 right-8 h-px opacity-40 group-hover:opacity-80 transition-opacity duration-400"
           style={{
-            background: `linear-gradient(90deg, transparent, ${item.color}, transparent)`,
+            position: 'absolute',
+            left: 0, top: 0, bottom: 0,
+            width: 5,
+            background: item.color,
           }}
         />
 
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
-          <div className="flex items-center gap-3">
-            {/* Company dot */}
-            <div
-              className="w-3 h-3 rounded-full shrink-0"
-              style={{ backgroundColor: item.color }}
-            />
+        <div style={{ padding: '24px 28px 24px 34px' }}>
+          {/* Header row */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'flex-start',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: 8,
+              marginBottom: 16,
+            }}
+          >
             <div>
-              <h3 className="text-lg md:text-xl font-semibold text-text-primary group-hover:text-brand transition-colors duration-200">
-                {item.company}
-              </h3>
-              <p className="text-sm text-text-secondary">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+                <div
+                  style={{
+                    width: 13, height: 13,
+                    background: item.color,
+                    border: '2px solid #1A1A1A',
+                    flexShrink: 0,
+                  }}
+                />
+                <h3
+                  className="font-mono font-bold uppercase text-navy"
+                  style={{ fontSize: 16, letterSpacing: '0.04em' }}
+                >
+                  {item.company}
+                </h3>
+              </div>
+              <p className="font-body text-navy" style={{ fontSize: 13, opacity: 0.55, marginLeft: 23 }}>
                 {item.role} · {item.type}
               </p>
             </div>
-          </div>
-          <div className="text-sm text-text-muted sm:text-right pl-6 sm:pl-0">
-            <p>{item.period}</p>
-            {item.location && <p className="text-xs mt-0.5">{item.location}</p>}
-          </div>
-        </div>
 
-        {/* Description */}
-        <ul className="space-y-2 mb-5 pl-6">
-          {item.description.map((desc, i) => (
-            <li key={i} className="text-sm md:text-base text-text-secondary/90 leading-relaxed relative">
-              <span className="absolute -left-4 top-2 w-1.5 h-1.5 rounded-full bg-white/10" />
-              {desc}
-            </li>
-          ))}
-        </ul>
-
-        {/* Paper link */}
-        {item.link && (
-          <a
-            href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-brand hover:text-brand-light transition-colors mb-4"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-            View Paper (arXiv)
-          </a>
-        )}
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2">
-          {item.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-3 py-1 rounded-full text-xs font-medium bg-white/[0.04] border border-white/[0.06] text-text-secondary group-hover:border-white/10 transition-colors"
+            <div
+              className="font-mono text-navy"
+              style={{ fontSize: 11, opacity: 0.45, textAlign: 'right', fontWeight: 700, flexShrink: 0 }}
             >
-              {tag}
-            </span>
-          ))}
+              <div>{item.period}</div>
+              {item.location && (
+                <div style={{ marginTop: 2, fontWeight: 400 }}>{item.location}</div>
+              )}
+            </div>
+          </div>
+
+          {/* Description list */}
+          <ul style={{ marginBottom: 16, marginLeft: 23, display: 'flex', flexDirection: 'column', gap: 6 }}>
+            {item.description.map((desc, i) => (
+              <li
+                key={i}
+                className="font-body text-navy"
+                style={{ fontSize: 14, lineHeight: 1.65, opacity: 0.7, display: 'flex', alignItems: 'flex-start', gap: 8 }}
+              >
+                <span style={{ color: item.color, fontWeight: 700, flexShrink: 0, marginTop: 1 }}>—</span>
+                {desc}
+              </li>
+            ))}
+          </ul>
+
+          {/* arXiv link */}
+          {item.link && (
+            <a
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono font-bold uppercase text-purple-shape"
+              style={{
+                fontSize: 11,
+                letterSpacing: '0.06em',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 5,
+                textDecoration: 'none',
+                marginLeft: 23,
+                marginBottom: 14,
+                transition: 'opacity 0.15s',
+              }}
+            >
+              ↗ VIEW PAPER (ARXIV)
+            </a>
+          )}
+
+          {/* Tags */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginLeft: 23 }}>
+            {item.tags.map((tag) => (
+              <span key={tag} className="tech-tag">{tag}</span>
+            ))}
+          </div>
         </div>
       </div>
+
+      {/* Offset shadow */}
+      <div
+        style={{
+          position: 'absolute', inset: 0,
+          border: '2.5px solid #1A1A1A',
+          transform: 'translate(5px, 5px)',
+          zIndex: -1,
+          background: '#C8C3B7',
+          pointerEvents: 'none',
+        }}
+      />
     </div>
   );
 }
 
 export function Experience() {
   return (
-    <section id="experience" className="relative py-24 md:py-32">
-      {/* Background accent */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-
+    <section
+      id="experience"
+      className="relative bg-cream border-t-2 border-navy"
+      style={{ padding: '80px 0 96px' }}
+    >
       <div className="max-w-4xl mx-auto px-6">
         {/* Section header */}
-        <div className="reveal mb-16">
-          <p className="text-sm font-medium text-brand tracking-widest uppercase mb-3">
-            Career
+        <div className="reveal" style={{ marginBottom: 56 }}>
+          <p
+            className="font-mono font-bold uppercase text-orange"
+            style={{ fontSize: 11, letterSpacing: '0.14em', marginBottom: 12 }}
+          >
+            CAREER
           </p>
-          <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-text-primary">
-            Experience
+          <h2
+            className="font-mono font-bold uppercase text-navy"
+            style={{
+              fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+              letterSpacing: '-0.02em',
+              lineHeight: 1.05,
+            }}
+          >
+            EXPERIENCE
           </h2>
-          <div className="mt-4 w-16 h-1 rounded-full bg-gradient-to-r from-brand to-accent" />
+          <div style={{ marginTop: 14, width: 48, height: 4, background: '#1A1A1A' }} />
         </div>
 
-        {/* Experience cards */}
-        <div className="space-y-6">
+        {/* Cards */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
           {experiences.map((item, index) => (
             <ExperienceCard key={item.company} item={item} index={index} />
           ))}
