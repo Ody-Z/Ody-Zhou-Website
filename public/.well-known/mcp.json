@@ -1,7 +1,7 @@
 {
   "name": "ody-zhou",
   "description": "MCP server for contacting Ody Zhou and booking meetings",
-  "url": "https://odyzhou.com/api/mcp",
+  "url": "https://www.odyzhou.com/api/mcp",
   "transport": "streamable-http",
   "tools": [
     {
