@@ -29,7 +29,7 @@ const experiences: ExperienceItem[] = [
   {
     company: 'Microsoft',
     role: 'Software Engineer',
-    type: 'Full-time',
+    type: 'Intership',
     period: 'Sep 2025 — Jan 2026',
     location: 'Beijing, China · Hybrid',
     description: [

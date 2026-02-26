@@ -252,6 +252,40 @@ export function Hero() {
         </div>
       </div>
 
+      {/* 10x Builder sticker — desktop only */}
+      <div
+        className="hero-duck absolute hidden lg:block"
+        style={{ zIndex: 10, top: '38%', right: '5%' }}
+      >
+        <div
+          style={{
+            background: 'white',
+            border: '2.5px solid #1A1A1A',
+            padding: '16px 20px',
+            transform: 'rotate(3deg)',
+            boxShadow: '4px 4px 0 #1A1A1A',
+            width: 200,
+            textAlign: 'center',
+          }}
+        >
+          <div style={{ fontSize: 32, lineHeight: 1, marginBottom: 8 }}>⚡</div>
+          <p
+            className="font-mono font-bold text-navy"
+            style={{ fontSize: 14, letterSpacing: '0.04em', lineHeight: 1.4, margin: 0 }}
+          >
+            10x BUILDER
+          </p>
+          <p
+            className="font-mono text-navy"
+            style={{ fontSize: 10, letterSpacing: '0.06em', lineHeight: 1.5, margin: '6px 0 0', opacity: 0.55 }}
+          >
+            Ship fast. Break things.
+            <br />
+            AI-native founder mode.
+          </p>
+        </div>
+      </div>
+
       {/* Scroll indicator */}
       <div
         className="hero-4 absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"

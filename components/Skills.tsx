@@ -14,28 +14,42 @@ const categories: Category[] = [
     num: '01',
     skills: ['Python', 'C#', 'Java', 'JavaScript', 'TypeScript', 'R'],
     accent: '#F4763B',
-    shadowColor: 'rgba(244,118,59,0.35)',
+    shadowColor: '#F9C4A8',
   },
   {
     title: 'AI & ML',
     num: '02',
     skills: ['Large Language Models', 'Reinforcement Learning', 'AI Agents', 'SVM', 'Clustering', 'Regression', 'Permutation Testing'],
     accent: '#9B72CF',
-    shadowColor: 'rgba(155,114,207,0.35)',
+    shadowColor: '#C9B3E6',
   },
   {
     title: 'BACKEND & INFRA',
     num: '03',
     skills: ['.NET Framework', 'Spring Boot', 'Kubernetes', 'Liquibase', 'Microservices', 'Linux Server'],
     accent: '#4A90D9',
-    shadowColor: 'rgba(74,144,217,0.35)',
+    shadowColor: '#A3C8ED',
   },
   {
     title: 'FRONTEND & TOOLS',
     num: '04',
     skills: ['React', 'TypeScript', 'Data Visualization', 'Statistics', 'Data Analysis'],
     accent: '#30C9B8',
-    shadowColor: 'rgba(48,201,184,0.35)',
+    shadowColor: '#A0E4DA',
+  },
+  {
+    title: 'PRODUCT & STRATEGY',
+    num: '05',
+    skills: ['Market Research', 'Rapid Prototyping', 'Idea Validation', 'User Interviews', 'Growth Experiments', 'Product Roadmapping'],
+    accent: '#FFDD00',
+    shadowColor: '#FFEE80',
+  },
+  {
+    title: 'LEADERSHIP & COMMUNICATION',
+    num: '06',
+    skills: ['Public Speaking', 'Sales & Pitching', 'Stakeholder Management', 'Cross-functional Collaboration', 'Team Building', 'Technical Writing'],
+    accent: '#E63946',
+    shadowColor: '#F2A0A6',
   },
 ];
 
@@ -167,8 +181,7 @@ export function Skills() {
                   border: '2.5px solid #1A1A1A',
                   transform: 'translate(5px, 5px)',
                   zIndex: -1,
-                  background: cat.accent,
-                  opacity: 0.4,
+                  background: cat.shadowColor,
                   pointerEvents: 'none',
                 }}
               />
