@@ -72,9 +72,9 @@ Real-time org-wide dashboard auto-discovering Kubernetes services, surfacing liv
 
 Ody's website exposes a remote MCP server that AI agents can use to contact him or book meetings.
 
-**Endpoint:** `https://odyzhou.com/api/mcp`
+**Endpoint:** `https://www.odyzhou.com/api/mcp`
 **Transport:** Streamable HTTP (stateless)
-**Discovery:** `https://odyzhou.com/.well-known/mcp.json`
+**Discovery:** `https://www.odyzhou.com/.well-known/mcp.json`
 
 ### Available Tools
 
@@ -94,7 +94,7 @@ Add to your MCP client config (Claude Desktop, Cursor, etc.):
 {
   "mcpServers": {
     "ody-zhou": {
-      "url": "https://odyzhou.com/api/mcp"
+      "url": "https://www.odyzhou.com/api/mcp"
     }
   }
 }
