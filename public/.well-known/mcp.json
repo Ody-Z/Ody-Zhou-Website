@@ -1,0 +1,16 @@
+{
+  "name": "ody-zhou",
+  "description": "MCP server for contacting Ody Zhou and booking meetings",
+  "url": "https://odyzhou.com/api/mcp",
+  "transport": "streamable-http",
+  "tools": [
+    {
+      "name": "contact_ody",
+      "description": "Send a message to Ody Zhou via Telegram"
+    },
+    {
+      "name": "book_meeting",
+      "description": "Get a Cal.com scheduling link to book a meeting with Ody"
+    }
+  ]
+}

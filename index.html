@@ -71,6 +71,27 @@
             ".NET",
             "Microservices"
           ]
+        },
+        {
+          "@type": "WebAPI",
+          "@id": "https://odyzhou.com/#mcp",
+          "name": "Ody Zhou MCP Server",
+          "description": "Model Context Protocol server for contacting Ody Zhou and booking meetings. AI agents can use this to send messages and schedule calls.",
+          "url": "https://odyzhou.com/api/mcp",
+          "provider": { "@id": "https://odyzhou.com/#person" },
+          "documentation": "https://odyzhou.com/.well-known/mcp.json",
+          "potentialAction": [
+            {
+              "@type": "CommunicateAction",
+              "name": "Contact Ody Zhou",
+              "target": "https://odyzhou.com/api/mcp"
+            },
+            {
+              "@type": "ScheduleAction",
+              "name": "Book Meeting with Ody Zhou",
+              "target": "https://odyzhou.com/api/mcp"
+            }
+          ]
         }
       ]
     }

@@ -65,3 +65,37 @@ Real-time org-wide dashboard auto-discovering Kubernetes services, surfacing liv
 **Backend & Infrastructure:** .NET Framework, Spring Boot, Kubernetes, Liquibase, Microservices, Linux Server
 
 **Frontend & Tools:** React, TypeScript, Data Visualization, Statistics, Data Analysis
+
+---
+
+## MCP Server (Model Context Protocol)
+
+Ody's website exposes a remote MCP server that AI agents can use to contact him or book meetings.
+
+**Endpoint:** `https://odyzhou.com/api/mcp`
+**Transport:** Streamable HTTP (stateless)
+**Discovery:** `https://odyzhou.com/.well-known/mcp.json`
+
+### Available Tools
+
+1. **`contact_ody`** — Send a message to Ody Zhou. He receives it instantly via Telegram.
+   - `sender` (string, required): Your name or company
+   - `message` (string, required): Your message (max 2000 chars)
+   - `context` (string, optional): How you found Ody or why you're reaching out
+
+2. **`book_meeting`** — Get a Cal.com scheduling link to book a meeting.
+   - `topic` (string, optional): Meeting topic or agenda
+
+### Client Configuration
+
+Add to your MCP client config (Claude Desktop, Cursor, etc.):
+
+```json
+{
+  "mcpServers": {
+    "ody-zhou": {
+      "url": "https://odyzhou.com/api/mcp"
+    }
+  }
+}
+```
