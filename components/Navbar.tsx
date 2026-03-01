@@ -6,15 +6,36 @@ const NAV_LINKS = [
   { label: 'SKILLS',     href: '#skills'     },
 ];
 
-export function Navbar() {
+interface NavbarProps {
+  navigate: (path: string) => void;
+  currentPath: string;
+}
+
+export function Navbar({ navigate, currentPath }: NavbarProps) {
   const [scrolled,   setScrolled]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const isBlog = currentPath === '/blog';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 64);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  /** Handle section links — if on /blog, navigate home first then scroll */
+  const handleSectionClick = (e: React.MouseEvent, href: string) => {
+    if (isBlog) {
+      e.preventDefault();
+      // Navigate home, then scroll after render
+      navigate('/');
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        el?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+    setMobileOpen(false);
+  };
 
   return (
     <>
@@ -52,7 +73,11 @@ export function Navbar() {
         >
           {/* Logo */}
           <a
-            href="#"
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/');
+            }}
             className="font-display font-extrabold text-orange hover:text-navy transition-colors duration-150"
             style={{ fontSize: 26, letterSpacing: '-0.02em' }}
           >
@@ -62,10 +87,27 @@ export function Navbar() {
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-10">
             {NAV_LINKS.map(({ label, href }) => (
-              <a key={href} href={href} className="nav-link">
+              <a
+                key={href}
+                href={isBlog ? `/${href}` : href}
+                onClick={(e) => handleSectionClick(e, href)}
+                className="nav-link"
+              >
                 {label}
               </a>
             ))}
+            <a
+              href="/blog"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/blog');
+                setMobileOpen(false);
+              }}
+              className="nav-link"
+              style={isBlog ? { color: '#F4763B' } : undefined}
+            >
+              BLOG
+            </a>
           </div>
 
           {/* Desktop actions */}
@@ -117,14 +159,26 @@ export function Navbar() {
               {NAV_LINKS.map(({ label, href }) => (
                 <a
                   key={href}
-                  href={href}
-                  onClick={() => setMobileOpen(false)}
+                  href={isBlog ? `/${href}` : href}
+                  onClick={(e) => handleSectionClick(e, href)}
                   className="nav-link"
                   style={{ fontSize: 12 }}
                 >
                   {label}
                 </a>
               ))}
+              <a
+                href="/blog"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/blog');
+                  setMobileOpen(false);
+                }}
+                className="nav-link"
+                style={{ fontSize: 12, ...(isBlog ? { color: '#F4763B' } : {}) }}
+              >
+                BLOG
+              </a>
               <a
                 href="mailto:zhouodywork@gmail.com"
                 onClick={() => setMobileOpen(false)}
