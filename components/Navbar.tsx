@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
-const NAV_LINKS = [
-  { label: 'ABOUT',      href: '#about'      },
-  { label: 'EXPERIENCE', href: '#experience' },
-  { label: 'SKILLS',     href: '#skills'     },
+const SECTION_LINKS = [
+  { label: 'WORK',    href: '#work'         },
+  { label: 'PROCESS', href: '#how-we-work'  },
+  { label: 'FAQ',     href: '#faq'          },
+  { label: 'CONTACT', href: '#contact'      },
+];
+
+const PAGE_LINKS = [
+  { label: 'ABOUT', path: '/about' },
+  { label: 'BLOG',  path: '/blog'  },
 ];
 
 interface NavbarProps {
@@ -15,6 +21,7 @@ export function Navbar({ navigate, currentPath }: NavbarProps) {
   const [scrolled,   setScrolled]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const isHome = currentPath === '/';
   const isBlog = currentPath === '/blog';
 
   useEffect(() => {
@@ -23,17 +30,22 @@ export function Navbar({ navigate, currentPath }: NavbarProps) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  /** Handle section links — if on /blog, navigate home first then scroll */
+  /** Handle section links — if not on home, navigate home first then scroll */
   const handleSectionClick = (e: React.MouseEvent, href: string) => {
-    if (isBlog) {
+    if (!isHome) {
       e.preventDefault();
-      // Navigate home, then scroll after render
       navigate('/');
       setTimeout(() => {
         const el = document.querySelector(href);
         el?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
     }
+    setMobileOpen(false);
+  };
+
+  const handlePageClick = (e: React.MouseEvent, path: string) => {
+    e.preventDefault();
+    navigate(path);
     setMobileOpen(false);
   };
 
@@ -86,35 +98,31 @@ export function Navbar({ navigate, currentPath }: NavbarProps) {
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-10">
-            {NAV_LINKS.map(({ label, href }) => (
+            {SECTION_LINKS.map(({ label, href }) => (
               <a
                 key={href}
-                href={isBlog ? `/${href}` : href}
+                href={isHome ? href : `/${href}`}
                 onClick={(e) => handleSectionClick(e, href)}
                 className="nav-link"
               >
                 {label}
               </a>
             ))}
-            <a
-              href="/blog"
-              onClick={(e) => {
-                e.preventDefault();
-                navigate('/blog');
-                setMobileOpen(false);
-              }}
-              className="nav-link"
-              style={isBlog ? { color: '#F4763B' } : undefined}
-            >
-              BLOG
-            </a>
+            {PAGE_LINKS.map(({ label, path }) => (
+              <a
+                key={path}
+                href={path}
+                onClick={(e) => handlePageClick(e, path)}
+                className="nav-link"
+                style={currentPath === path ? { color: '#F4763B' } : undefined}
+              >
+                {label}
+              </a>
+            ))}
           </div>
 
           {/* Desktop actions */}
           <div className="hidden md:flex items-center gap-5">
-            <a href="mailto:zhouodywork@gmail.com" className="nav-link">
-              CONTACT
-            </a>
             <a
               href="https://github.com/Ody-Z"
               target="_blank"
@@ -156,10 +164,10 @@ export function Navbar({ navigate, currentPath }: NavbarProps) {
         {mobileOpen && (
           <div className="md:hidden border-t-2 border-navy bg-cream">
             <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col gap-5">
-              {NAV_LINKS.map(({ label, href }) => (
+              {SECTION_LINKS.map(({ label, href }) => (
                 <a
                   key={href}
-                  href={isBlog ? `/${href}` : href}
+                  href={isHome ? href : `/${href}`}
                   onClick={(e) => handleSectionClick(e, href)}
                   className="nav-link"
                   style={{ fontSize: 12 }}
@@ -167,26 +175,17 @@ export function Navbar({ navigate, currentPath }: NavbarProps) {
                   {label}
                 </a>
               ))}
-              <a
-                href="/blog"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate('/blog');
-                  setMobileOpen(false);
-                }}
-                className="nav-link"
-                style={{ fontSize: 12, ...(isBlog ? { color: '#F4763B' } : {}) }}
-              >
-                BLOG
-              </a>
-              <a
-                href="mailto:zhouodywork@gmail.com"
-                onClick={() => setMobileOpen(false)}
-                className="nav-link"
-                style={{ fontSize: 12 }}
-              >
-                CONTACT
-              </a>
+              {PAGE_LINKS.map(({ label, path }) => (
+                <a
+                  key={path}
+                  href={path}
+                  onClick={(e) => handlePageClick(e, path)}
+                  className="nav-link"
+                  style={{ fontSize: 12, ...(currentPath === path ? { color: '#F4763B' } : {}) }}
+                >
+                  {label}
+                </a>
+              ))}
             </div>
           </div>
         )}

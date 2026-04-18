@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { Experience } from './components/Experience';
-import { Skills } from './components/Skills';
+import { SelectedWork } from './components/SelectedWork';
+import { HowWeWork } from './components/HowWeWork';
+import { FAQ } from './components/FAQ';
+import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { BlogPage } from './components/blog/BlogPage';
+import { AboutPage } from './components/AboutPage';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -43,6 +46,7 @@ export default function App() {
   }, [currentPath]);
 
   const isBlog = currentPath === '/blog';
+  const isAbout = currentPath === '/about';
 
   return (
     <div className="min-h-screen bg-cream text-navy overflow-x-hidden">
@@ -50,11 +54,15 @@ export default function App() {
       <main>
         {isBlog ? (
           <BlogPage />
+        ) : isAbout ? (
+          <AboutPage />
         ) : (
           <>
             <Hero />
-            <Experience />
-            <Skills />
+            <SelectedWork />
+            <HowWeWork />
+            <FAQ />
+            <Contact />
           </>
         )}
       </main>

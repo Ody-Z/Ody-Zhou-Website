@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface ExperienceItem {
+interface ShippedItem {
   company: string;
   role: string;
   type: string;
@@ -12,32 +12,49 @@ interface ExperienceItem {
   link?: string;
 }
 
-const experiences: ExperienceItem[] = [
+const primary: ShippedItem[] = [
   {
     company: 'RAY AI',
     role: 'Founder',
-    type: 'Full-time',
+    type: 'Own product · Live',
     period: 'May 2025 — Present',
     location: '',
     description: [
-      'Building an AI marking workflow for tuition centres that reduces cost and manual workload through automated assessment and feedback.',
+      'AI marking workflow for tuition centres — automated assessment and feedback that replaces manual grading.',
+      'Full-stack build, production deployed, real paying users.',
     ],
-    tags: ['AI', 'EdTech', 'Startup', 'LLM'],
+    tags: ['LLM', 'Full-stack', 'EdTech', 'Founder'],
     color: '#FFDD00',
     link: 'https://rayfeedback.ai',
   },
   {
+    company: 'Tsinghua University',
+    role: 'Research Assistant · World Model for Minecraft',
+    type: 'Published research · arxiv',
+    period: 'Nov 2024 — Mar 2025',
+    location: 'Beijing, China',
+    description: [
+      'Designed an autonomous agent powered by a learned world model for Minecraft.',
+      'First-author paper accepted and published on arxiv (2502.05907).',
+    ],
+    tags: ['Reinforcement Learning', 'LLM', 'AI Agents', 'Python'],
+    color: '#9B72CF',
+    link: 'https://arxiv.org/pdf/2502.05907',
+  },
+];
+
+const prior: ShippedItem[] = [
+  {
     company: 'Microsoft',
     role: 'Software Engineer',
-    type: 'Intership',
+    type: 'Internship',
     period: 'Sep 2025 — Jan 2026',
-    location: 'Beijing, China · Hybrid',
+    location: 'Beijing · Hybrid',
     description: [
-      'Empowered Bing Shopping using AI to improve shopping title quality.',
-      'Built a hybrid approach combining rule-based methods with LLM-powered rewrites.',
-      'Developed an LLM evaluation pipeline for quality assessment.',
+      'Improved Bing Shopping title quality with a hybrid of rules + LLM rewrites.',
+      'Built an LLM evaluation pipeline for output quality.',
     ],
-    tags: ['C#', '.NET', 'LLM', 'Search', 'AI'],
+    tags: ['C#', '.NET', 'LLM', 'Search'],
     color: '#00A4EF',
   },
   {
@@ -45,49 +62,32 @@ const experiences: ExperienceItem[] = [
     role: 'Software Engineer',
     type: 'Internship',
     period: 'Jul 2025 — Sep 2025',
-    location: 'Hong Kong SAR · On-site',
+    location: 'Hong Kong · On-site',
     description: [
-      'Architected org-wide microservices visualization dashboard with React and Spring Boot.',
-      'Auto-discovering Kubernetes services and surfacing live metadata.',
-      'Enforced safe, versioned database changes with Liquibase.',
-      'Centralized configuration and visibility for all microservices.',
+      'Org-wide microservices visualization dashboard (React + Spring Boot).',
+      'Auto-discovering Kubernetes services, surfacing live metadata.',
     ],
-    tags: ['Java', 'React', 'Spring Boot', 'Kubernetes', 'Liquibase', 'Microservices'],
+    tags: ['Java', 'React', 'Spring Boot', 'Kubernetes'],
     color: '#DB0011',
   },
   {
-    company: 'Tsinghua University',
+    company: 'UNSW · School of Aviation',
     role: 'Research Assistant',
-    type: 'Internship',
-    period: 'Nov 2024 — Mar 2025',
-    location: 'Beijing, China · On-site',
-    description: [
-      'Designed and implemented an autonomous agent empowered by World Model for Minecraft.',
-    ],
-    tags: ['Python', 'Reinforcement Learning', 'LLM', 'AI Agents', 'Linux'],
-    color: '#82318E',
-    link: 'https://arxiv.org/pdf/2502.05907',
-  },
-  {
-    company: 'UNSW School of Aviation',
-    role: 'Research Assistant',
-    type: 'Internship',
+    type: 'DatAviation Lab · Tourism Australia',
     period: 'Nov 2023 — Jun 2024',
     location: 'Sydney, Australia',
     description: [
-      'DatAviation lab sponsored by Tourism Australia.',
-      'Developed algorithms ranking sustainability of airlines using regression, permutation testing, SVM, and clustering.',
+      'Ranked airline sustainability using regression, permutation testing, SVM, and clustering.',
     ],
-    tags: ['Python', 'R', 'Statistics', 'SVM', 'Clustering', 'Regression'],
+    tags: ['Python', 'R', 'Statistics', 'ML'],
     color: '#F4763B',
   },
 ];
 
-function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }) {
+function ShippedCard({ item, index, compact = false }: { item: ShippedItem; index: number; compact?: boolean }) {
   return (
     <div className={`reveal reveal-delay-${(index % 4) + 1} relative`}>
       <div className="exp-card">
-        {/* Left color stripe */}
         <div
           style={{
             position: 'absolute',
@@ -97,8 +97,7 @@ function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }
           }}
         />
 
-        <div style={{ padding: '24px 28px 24px 34px' }}>
-          {/* Header row */}
+        <div style={{ padding: compact ? '20px 24px 22px 30px' : '26px 30px 26px 36px' }}>
           <div
             style={{
               display: 'flex',
@@ -107,14 +106,14 @@ function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }
               justifyContent: 'space-between',
               flexWrap: 'wrap',
               gap: 8,
-              marginBottom: 16,
+              marginBottom: compact ? 12 : 18,
             }}
           >
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
                 <div
                   style={{
-                    width: 13, height: 13,
+                    width: compact ? 11 : 13, height: compact ? 11 : 13,
                     background: item.color,
                     border: '2px solid #1A1A1A',
                     flexShrink: 0,
@@ -122,19 +121,19 @@ function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }
                 />
                 <h3
                   className="font-mono font-bold uppercase text-navy"
-                  style={{ fontSize: 16, letterSpacing: '0.04em' }}
+                  style={{ fontSize: compact ? 14 : 17, letterSpacing: '0.04em' }}
                 >
                   {item.company}
                 </h3>
               </div>
-              <p className="font-body text-navy" style={{ fontSize: 13, opacity: 0.55, marginLeft: 23 }}>
+              <p className="font-body text-navy" style={{ fontSize: compact ? 12.5 : 13.5, opacity: 0.6, marginLeft: 23 }}>
                 {item.role} · {item.type}
               </p>
             </div>
 
             <div
               className="font-mono text-navy"
-              style={{ fontSize: 11, opacity: 0.45, textAlign: 'right', fontWeight: 700, flexShrink: 0 }}
+              style={{ fontSize: compact ? 10 : 11, opacity: 0.45, textAlign: 'right', fontWeight: 700, flexShrink: 0 }}
             >
               <div>{item.period}</div>
               {item.location && (
@@ -143,13 +142,12 @@ function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }
             </div>
           </div>
 
-          {/* Description list */}
-          <ul style={{ marginBottom: 16, marginLeft: 23, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <ul style={{ marginBottom: 14, marginLeft: 23, display: 'flex', flexDirection: 'column', gap: 6 }}>
             {item.description.map((desc, i) => (
               <li
                 key={i}
                 className="font-body text-navy"
-                style={{ fontSize: 14, lineHeight: 1.65, opacity: 0.7, display: 'flex', alignItems: 'flex-start', gap: 8 }}
+                style={{ fontSize: compact ? 13.5 : 14.5, lineHeight: 1.6, opacity: 0.75, display: 'flex', alignItems: 'flex-start', gap: 8 }}
               >
                 <span style={{ color: item.color, fontWeight: 700, flexShrink: 0, marginTop: 1 }}>—</span>
                 {desc}
@@ -157,30 +155,30 @@ function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }
             ))}
           </ul>
 
-          {/* External link */}
           {item.link && (
             <a
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono font-bold uppercase text-purple-shape"
+              className="font-mono font-bold uppercase"
               style={{
                 fontSize: 11,
-                letterSpacing: '0.06em',
+                letterSpacing: '0.08em',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: 5,
                 textDecoration: 'none',
                 marginLeft: 23,
                 marginBottom: 14,
-                transition: 'opacity 0.15s',
+                color: '#1A1A1A',
+                borderBottom: `2px solid ${item.color}`,
+                paddingBottom: 2,
               }}
             >
-              {item.link.includes('arxiv') ? '↗ VIEW PAPER (ARXIV)' : `↗ ${item.link.replace(/^https?:\/\//, '')}`}
+              {item.link.includes('arxiv') ? '↗ READ THE PAPER' : `↗ ${item.link.replace(/^https?:\/\//, '')}`}
             </a>
           )}
 
-          {/* Tags */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginLeft: 23 }}>
             {item.tags.map((tag) => (
               <span key={tag} className="tech-tag">{tag}</span>
@@ -189,7 +187,6 @@ function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }
         </div>
       </div>
 
-      {/* Offset shadow */}
       <div
         style={{
           position: 'absolute', inset: 0,
@@ -209,96 +206,54 @@ export function Experience() {
     <section
       id="experience"
       className="relative bg-cream border-t-2 border-navy"
-      style={{ padding: '80px 0 96px' }}
+      style={{ padding: '88px 0 104px' }}
     >
       <div className="max-w-4xl mx-auto px-6">
         {/* Section header */}
-        <div className="reveal" style={{ marginBottom: 56 }}>
+        <div className="reveal" style={{ marginBottom: 48 }}>
           <p
             className="font-mono font-bold uppercase text-orange"
             style={{ fontSize: 11, letterSpacing: '0.14em', marginBottom: 12 }}
           >
-            CAREER
+            SHIPPED
           </p>
           <h2
             className="font-mono font-bold uppercase text-navy"
             style={{
-              fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+              fontSize: 'clamp(2.3rem, 5.5vw, 4.25rem)',
               letterSpacing: '-0.02em',
               lineHeight: 1.05,
             }}
           >
-            EXPERIENCE
+            WHAT I'VE<br />
+            <span style={{ color: '#F4763B' }}>BUILT</span>
           </h2>
           <div style={{ marginTop: 14, width: 48, height: 4, background: '#1A1A1A' }} />
         </div>
 
-        {/* Cards */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
-          {experiences.map((item, index) => (
-            <ExperienceCard key={item.company} item={item} index={index} />
+        {/* Primary: own products + research */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 28, marginBottom: 64 }}>
+          {primary.map((item, index) => (
+            <ShippedCard key={item.company} item={item} index={index} />
           ))}
         </div>
 
-        {/* Education */}
-        <div className="reveal" style={{ marginTop: 72, marginBottom: 40 }}>
+        {/* Prior divider */}
+        <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 32 }}>
           <p
-            className="font-mono font-bold uppercase text-orange"
-            style={{ fontSize: 11, letterSpacing: '0.14em', marginBottom: 12 }}
+            className="font-mono font-bold uppercase"
+            style={{ fontSize: 10, letterSpacing: '0.2em', color: '#1A1A1A', opacity: 0.45, flexShrink: 0 }}
           >
-            EDUCATION
+            ↓ PRIOR &nbsp; WORK
           </p>
-          <h2
-            className="font-mono font-bold uppercase text-navy"
-            style={{
-              fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
-              letterSpacing: '-0.02em',
-              lineHeight: 1.05,
-            }}
-          >
-            BACKGROUND
-          </h2>
-          <div style={{ marginTop: 14, width: 48, height: 4, background: '#1A1A1A' }} />
+          <div style={{ flex: 1, height: 1, background: '#1A1A1A', opacity: 0.2 }} />
         </div>
 
-        <div className="reveal reveal-delay-1 relative">
-          <div className="exp-card">
-            <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 5, background: '#FFDD00' }} />
-            <div style={{ padding: '24px 28px 24px 34px' }}>
-              <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, marginBottom: 16 }}>
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
-                    <div style={{ width: 13, height: 13, background: '#FFDD00', border: '2px solid #1A1A1A', flexShrink: 0 }} />
-                    <h3 className="font-mono font-bold uppercase text-navy" style={{ fontSize: 16, letterSpacing: '0.04em' }}>
-                      University of Sydney
-                    </h3>
-                  </div>
-                  <p className="font-body text-navy" style={{ fontSize: 13, opacity: 0.55, marginLeft: 23 }}>
-                    Bachelor of Computing · In Progress
-                  </p>
-                </div>
-                <div className="font-mono text-navy" style={{ fontSize: 11, opacity: 0.45, textAlign: 'right', fontWeight: 700, flexShrink: 0 }}>
-                  <div>Sydney, Australia</div>
-                </div>
-              </div>
-              <ul style={{ marginBottom: 16, marginLeft: 23, display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <li className="font-body text-navy" style={{ fontSize: 14, lineHeight: 1.65, opacity: 0.7, display: 'flex', alignItems: 'flex-start', gap: 8 }}>
-                  <span style={{ color: '#FFDD00', fontWeight: 700, flexShrink: 0, marginTop: 1 }}>—</span>
-                  Major in Computational Data Science
-                </li>
-                <li className="font-body text-navy" style={{ fontSize: 14, lineHeight: 1.65, opacity: 0.7, display: 'flex', alignItems: 'flex-start', gap: 8 }}>
-                  <span style={{ color: '#FFDD00', fontWeight: 700, flexShrink: 0, marginTop: 1 }}>—</span>
-                  Minor in Statistics
-                </li>
-              </ul>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginLeft: 23 }}>
-                {['Data Science', 'Statistics', 'Computing', 'Python', 'R'].map((tag) => (
-                  <span key={tag} className="tech-tag">{tag}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div style={{ position: 'absolute', inset: 0, border: '2.5px solid #1A1A1A', transform: 'translate(5px, 5px)', zIndex: -1, background: '#C8C3B7', pointerEvents: 'none' }} />
+        {/* Prior: intern + earlier RA */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          {prior.map((item, index) => (
+            <ShippedCard key={item.company} item={item} index={index} compact />
+          ))}
         </div>
       </div>
     </section>

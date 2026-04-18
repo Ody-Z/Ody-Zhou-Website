@@ -151,19 +151,16 @@ export function Hero() {
         className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center text-center"
         style={{ paddingTop: 64 }}
       >
-        {/* Available badge */}
-        <div className="hero-1 inline-flex items-center gap-2 bg-white border-2 border-navy px-4 py-2 mb-10">
-          <div
-            style={{
-              width: 8, height: 8, borderRadius: '50%', background: '#22C55E',
-              animation: 'pulse 2.5s ease-in-out infinite',
-            }}
-          />
+        {/* Tagline */}
+        <div
+          className="hero-1 inline-flex items-center gap-2 bg-white border-2 border-navy mb-10"
+          style={{ padding: '8px 16px' }}
+        >
           <span
             className="font-mono font-bold uppercase text-navy"
-            style={{ fontSize: 11, letterSpacing: '0.12em' }}
+            style={{ fontSize: 11, letterSpacing: '0.14em' }}
           >
-            Available for Opportunities
+            Builder consultant for small teams
           </span>
         </div>
 
@@ -171,30 +168,97 @@ export function Hero() {
         <h1
           className="hero-2 font-mono font-bold text-navy"
           style={{
-            fontSize: 'clamp(2.8rem, 9vw, 7rem)',
-            lineHeight: 1.04,
+            fontSize: 'clamp(2.4rem, 7.5vw, 6rem)',
+            lineHeight: 1.06,
             letterSpacing: '-0.02em',
           }}
         >
-          Landing Ideas
+          You teach me
           <br />
-          <span style={{ color: '#F4763B' }}>into</span>
+          your business.
           <br />
-          Future
+          I'll <span style={{ color: '#F4763B' }}>build the AI</span>
+          <br />
+          that fits.
         </h1>
 
-        {/* Sub-copy */}
-        <p
-          className="hero-3 font-body text-navy max-w-xl mx-auto"
-          style={{ fontSize: 18, lineHeight: 1.65, opacity: 0.62, marginTop: 28, marginBottom: 44 }}
-        >
-          Ody Zhou — Product builder & Researcher building tools for the agentic world.
-        </p>
-
         {/* CTAs */}
-        <div className="hero-4 flex flex-col sm:flex-row items-center gap-4">
-          <a href="#experience" className="btn-primary">VIEW MY WORK →</a>
-          <a href="mailto:zhouodywork@gmail.com" className="btn-outline">GET IN TOUCH</a>
+        <div className="hero-4 flex flex-col sm:flex-row items-center gap-4" style={{ marginTop: 44 }}>
+          <a href="#contact" className="btn-primary">LET'S TALK →</a>
+        </div>
+      </div>
+
+      {/* 10x BUILDER floating card — desktop only, upper right */}
+      <div
+        className="hero-duck absolute hidden lg:block animate-float-2"
+        style={{ zIndex: 10, top: '13rem', right: '6%' }}
+        aria-hidden
+      >
+        <div style={{ position: 'relative' }}>
+          <div
+            style={{
+              background: 'white',
+              border: '2.5px solid #1A1A1A',
+              padding: '18px 24px 20px',
+              transform: 'rotate(3deg)',
+              boxShadow: '5px 5px 0 #1A1A1A',
+              textAlign: 'center',
+              minWidth: 210,
+            }}
+          >
+            {/* Lightning bolt */}
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F4763B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ margin: '0 auto 8px', display: 'block' }}>
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="#FFDD00" />
+            </svg>
+            <p
+              className="font-mono font-bold uppercase text-navy"
+              style={{ fontSize: 14, letterSpacing: '0.04em', marginBottom: 8 }}
+            >
+              10x BUILDER
+            </p>
+            <p
+              className="font-mono text-navy"
+              style={{ fontSize: 11, letterSpacing: '0.02em', lineHeight: 1.5, opacity: 0.6 }}
+            >
+              Ship fast.<br />Break things.<br />AI-native founder mode.
+            </p>
+          </div>
+          {/* Tiny red dot accent */}
+          <div
+            style={{
+              position: 'absolute',
+              bottom: -8,
+              right: 16,
+              width: 16,
+              height: 16,
+              borderRadius: '50%',
+              background: '#E63946',
+              border: '2px solid #1A1A1A',
+            }}
+          />
+        </div>
+      </div>
+
+      {/* Duck mascot + speech bubble — desktop only, lower right */}
+      <div
+        className="hero-duck absolute hidden lg:flex flex-col items-center"
+        style={{ zIndex: 10, bottom: '8rem', right: '7%', gap: 4 }}
+      >
+        {/* Speech bubble */}
+        <div
+          className="speech-bubble speech-bubble--down"
+          style={{ marginBottom: 18, transform: 'rotate(-2deg)' }}
+        >
+          <span
+            className="font-mono font-bold uppercase text-navy"
+            style={{ fontSize: 12, letterSpacing: '0.08em' }}
+          >
+            LET'S BUILD!
+          </span>
+        </div>
+        {/* Duck — wiggles side to side */}
+        <div className="animate-wiggle" style={{ transformOrigin: '50% 90%' }}>
+          <Duck width={140} />
         </div>
       </div>
 
@@ -230,58 +294,6 @@ export function Hero() {
             }}
           >
             ODY ZHOU ✌
-          </p>
-        </div>
-      </div>
-
-      {/* Duck mascot + speech bubble (desktop only) */}
-      <div
-        className="hero-duck absolute bottom-28 right-[7%] hidden lg:flex flex-col items-start"
-        style={{ zIndex: 10 }}
-      >
-        <div className="speech-bubble speech-bubble--down" style={{ marginBottom: 22 }}>
-          <span
-            className="font-mono font-bold uppercase text-navy"
-            style={{ fontSize: 11, letterSpacing: '0.1em' }}
-          >
-            OPEN TO WORK!
-          </span>
-        </div>
-        <div className="animate-wiggle" style={{ transformOrigin: 'center bottom' }}>
-          <Duck width={155} />
-        </div>
-      </div>
-
-      {/* 10x Builder sticker — desktop only */}
-      <div
-        className="hero-duck absolute hidden lg:block"
-        style={{ zIndex: 10, top: '38%', right: '5%' }}
-      >
-        <div
-          style={{
-            background: 'white',
-            border: '2.5px solid #1A1A1A',
-            padding: '16px 20px',
-            transform: 'rotate(3deg)',
-            boxShadow: '4px 4px 0 #1A1A1A',
-            width: 200,
-            textAlign: 'center',
-          }}
-        >
-          <div style={{ fontSize: 32, lineHeight: 1, marginBottom: 8 }}>⚡</div>
-          <p
-            className="font-mono font-bold text-navy"
-            style={{ fontSize: 14, letterSpacing: '0.04em', lineHeight: 1.4, margin: 0 }}
-          >
-            10x BUILDER
-          </p>
-          <p
-            className="font-mono text-navy"
-            style={{ fontSize: 10, letterSpacing: '0.06em', lineHeight: 1.5, margin: '6px 0 0', opacity: 0.55 }}
-          >
-            Ship fast. Break things.
-            <br />
-            AI-native founder mode.
           </p>
         </div>
       </div>
